@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 from src.utils.openai_client import OpenAIClient
 from src.agents.moderator import Moderator
-from src.agents.debater import Debater
+from src.agents.debater import PartyDebater
 from src.debate.debate_manager import DebateManager
 
 load_dotenv()
@@ -9,13 +9,16 @@ load_dotenv()
 def main():
     client = OpenAIClient()
     
-    # stream=True is now default in BaseAgent
-    moderator = Moderator("Moderator", client)
-    debater_a = Debater("Pro", "You argue in favor of the topic", client)
-    debater_b = Debater("Con", "You argue against the topic", client)
+    moderator = Moderator("Voorzitter", client)
     
-    debate = DebateManager(moderator, [debater_a, debater_b])
-    debate.run_debate("Pineapple belongs on pizza", num_rounds=2)
+    # Creëer partij-specifieke debaters
+    groenlinks = PartyDebater("GroenLinks", client)
+    vvd = PartyDebater("VVD", client)
+    
+    debate = DebateManager(moderator, [groenlinks, vvd])
+    
+    # Debat over een relevant Nederlands politiek onderwerp
+    debate.run_debate("Moet Nederland een vermogensbelasting invoeren?", num_rounds=1)
 
 if __name__ == "__main__":
     main()

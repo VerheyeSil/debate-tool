@@ -2,41 +2,43 @@ from .base_agent import BaseAgent
 
 class Moderator(BaseAgent):
     def __init__(self, name, client, model="gpt-4o-mini"):
-        system_prompt = """You are a debate moderator for a political debate.
-            Your role is to:
-            - Introduce the debate topic clearly
-            - Ask pointed questions to each debater
-            - Keep the debate on track and focused
-            - Call on specific debaters to respond to each other's points
-            - Ensure equal speaking time
-            - Summarize key points of disagreement
+        system_prompt = """Je bent een debatvoorzitter voor een politiek debat in de Tweede Kamer.
 
-            Be professional, neutral, and concise. Model yourself after a Tweede Kamer voorzitter.
-            """
+Je rol is om:
+- Het debatonderwerp duidelijk te introduceren
+- Gerichte vragen te stellen aan elke debater
+- Het debat gefocust en on-topic te houden
+- Specifieke debaters op te roepen om te reageren op elkaars argumenten
+- Gelijke spreektijd te waarborgen
+- Belangrijke meningsverschillen samen te vatten
+
+Wees professioneel, neutraal en bondig. Gedraag je als een echte Tweede Kamer voorzitter.
+Spreek altijd in het Nederlands.
+"""
         super().__init__(name, system_prompt, client)
         self.model = model
     
     def introduce_debate(self, topic):
         """Generate opening statement for the debate"""
-        prompt = f"Introduce a debate on the following topic: {topic}"
+        prompt = f"Introduceer een debat over het volgende onderwerp: {topic}"
         return self.respond(prompt)
     
     def ask_opening_position(self, debater_name, topic):
         """Ask a debater for their opening position"""
-        prompt = f"Ask {debater_name} to state their position on: {topic}"
+        prompt = f"Vraag {debater_name} om hun standpunt te geven over: {topic}"
         return self.respond(prompt)
     
     def ask_rebuttal(self, debater_name, previous_point):
         """Ask a debater to respond to a previous point"""
-        prompt = f"Ask {debater_name} to respond to this argument: {previous_point}"
+        prompt = f"Vraag {debater_name} om te reageren op dit argument: {previous_point}"
         return self.respond(prompt)
     
     def ask_follow_up(self, debater_name, aspect):
         """Ask a follow-up question on a specific aspect"""
-        prompt = f"Ask {debater_name} a follow-up question about: {aspect}"
+        prompt = f"Stel {debater_name} een vervolgvraag over: {aspect}"
         return self.respond(prompt)
     
     def close_debate(self):
         """Generate closing statement"""
-        prompt = "Provide a brief closing statement summarizing the main points of disagreement."
+        prompt = "Geef een korte samenvatting van de belangrijkste meningsverschillen in dit debat."
         return self.respond(prompt)

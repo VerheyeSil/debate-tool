@@ -9,9 +9,15 @@ class DebateManager:
     def run_debate(self, topic, num_rounds=3):
         self._print_header(topic)
         
+        # Geef de moderator context over wie er debatteren
+        debater_names = ", ".join([d.name for d in self.debaters])
+        
         # Opening
         self._print_speaker(self.moderator.name)
-        opening = self.moderator.respond(f"Introduce debate on: {topic}")
+        opening = self.moderator.respond(
+            f"Introduceer een debat over '{topic}'. De debaters zijn: {debater_names}. "
+            f"Noem ALLEEN deze debaters, geen anderen."
+        )
         self.log(self.moderator.name, opening)
         self._pause()
         
@@ -21,7 +27,9 @@ class DebateManager:
             
             for debater in self.debaters:
                 self._print_speaker(self.moderator.name)
-                prompt = self.moderator.respond(f"Ask {debater.name} for their position")
+                prompt = self.moderator.respond(
+                    f"Vraag {debater.name} (en ALLEEN {debater.name}) om hun positie te geven over dit onderwerp."
+                )
                 self.log(self.moderator.name, prompt)
                 self._pause()
                 
@@ -43,17 +51,17 @@ class DebateManager:
     
     def _print_header(self, topic):
         print("\n" + "="*80)
-        print(f"DEBATE: {topic}".center(80))
+        print(f"DEBAT: {topic}".center(80))
         print("="*80 + "\n")
     
     def _print_round(self, round_num):
         print("\n" + "-"*80)
-        print(f"ROUND {round_num}".center(80))
+        print(f"RONDE {round_num}".center(80))
         print("-"*80 + "\n")
     
     def _print_speaker(self, name):
         print(f"\n\033[1m{name}:\033[0m ", end='', flush=True)  # Bold name
     
     def _pause(self, seconds=1):
-        """Brief pause between speakers for readability"""
+        """Korte pauze tussen sprekers voor leesbaarheid"""
         time.sleep(seconds)

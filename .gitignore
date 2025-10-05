@@ -24,3 +24,7 @@ TestResults.xml
 .env
 
 debate_venv
+
+demos
+
+__pycache__/*

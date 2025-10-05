@@ -46,4 +46,4 @@ create_party_structure(
     }
 )
 
-print("\nVoltoooid! Voeg nu handmatig meer details toe aan de verkiezingsprogramma.txt bestanden.")
+print("\nVoltooid! Voeg nu handmatig meer details toe aan de verkiezingsprogramma.txt bestanden.")

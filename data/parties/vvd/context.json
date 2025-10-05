@@ -1,0 +1,15 @@
+{
+  "party_name": "VVD",
+  "core_values": [
+    "economische vrijheid",
+    "eigen verantwoordelijkheid",
+    "veiligheid",
+    "pragmatisme"
+  ],
+  "key_policies": {
+    "economie": "Lagere belastingen, minder regelgeving, ondernemers ondersteunen",
+    "wonen": "Woningaanbod vergroten via marktmechanismen",
+    "belastingen": "Lagere inkomstenbelasting, minder herverdeling",
+    "veiligheid": "Sterke rechtshandhaving, grenscontrole"
+  }
+}

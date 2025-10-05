@@ -1,0 +1,15 @@
+{
+  "party_name": "GroenLinks",
+  "core_values": [
+    "duurzaamheid",
+    "sociale rechtvaardigheid",
+    "gelijkheid",
+    "progressieve belastingen"
+  ],
+  "key_policies": {
+    "klimaat": "Klimaatneutraal in 2030, afbouwen fossiele brandstoffen",
+    "wonen": "100.000 betaalbare woningen, huurbevriezing, limiteren verhuurders",
+    "belastingen": "Progressieve belastingen, vermogensbelasting vanaf €1M",
+    "zorg": "Sterke publieke gezondheidszorg, prioriteit voor geestelijke gezondheid"
+  }
+}
